@@ -7,6 +7,7 @@
 [![Open in Gitpod](https://shields.io/badge/Open%20in-Gitpod-green?logo=Gitpod)](https://gitpod.io/#https://github.com/logue/@logue/vue2-helpers)
 
 A util package to use Vue 2 with Composition API easily.
+This fork supports Vue 2.7.0 and Vuetify.
 
 ## ⬇️ Install
 
@@ -60,7 +61,7 @@ router.push('/login');
 
 | Features                                             | Description |
 | ---------------------------------------------------- | ----------- |
-| `createVuetify`(options: UserVuetifyPreset): vuetify |             |
+| `createVuetify`(options: UserVuetifyPreset): Vuetify |             |
 | `useVuetify`(): Framework                            |             |
 
 ## License

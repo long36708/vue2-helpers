@@ -1,6 +1,7 @@
-import pkg from '../package.json';
+/* eslint-disable */
+const pkg = require('../package.json');
 
-export default `
+module.exports = `
 /**
  * ${pkg.name}@${pkg.version}
  * ${pkg.description}

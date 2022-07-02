@@ -26,10 +26,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "types": ["vite/client"],
     "useDefineForClassFields": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "dist"]
 }
