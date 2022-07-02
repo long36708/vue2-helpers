@@ -40,8 +40,9 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
           index: path.resolve(__dirname, 'src/index.ts'),
           vuex: path.resolve(__dirname, 'src/vuex.ts'),
           'vue-router': path.resolve(__dirname, 'src/vue-router.ts'),
+          vuetify: path.resolve(__dirname, 'src/vuetify.ts'),
         },
-        external: ['vue', 'vuex', 'vue-router'],
+        external: ['vue', 'vuex', 'vue-router', 'vuetify'],
         plugins: [
           mode === 'analyze'
             ? // rollup-plugin-visualizer

@@ -24,6 +24,9 @@
     },
     "./vue-router": {
       "import": "./dist/vue-router.js"
+    },
+    "./vuetify": {
+      "import": "./dist/vuetify.js"
     }
   },
   "types": "./dist/index.d.ts",
@@ -52,10 +55,15 @@
     "url": "https://github.com/logue/vue2-helpers/issues"
   },
   "peerDependencies": {
+    "vue": "^2.7.0",
     "vue-router": "^3.5.4",
+    "vuetify": "^2.6.7",
     "vuex": "^3.6.2"
   },
   "peerDependenciesMeta": {
+    "vuetify": {
+      "optional": true
+    },
     "vuex": {
       "optional": true
     }
@@ -89,6 +97,7 @@
     "vue-eslint-parser": "^9.0.3",
     "vue-router": "^3.5.4",
     "vue-tsc": "^0.38.2",
+    "vuetify": "^2.6.7",
     "vuex": "^3.6.2"
   },
   "husky": {

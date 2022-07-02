@@ -14,7 +14,7 @@ export function useStore<S = any>(): Store<S> {
   if (inst) {
     return inst.proxy.$store;
   } else {
-    warn('[vuex] ' + OUT_OF_SCOPE);
+    warn(`[vuex] ${OUT_OF_SCOPE}`);
   }
   return undefined as any;
 }

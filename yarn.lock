@@ -143,11 +143,16 @@ __metadata:
     vue-eslint-parser: ^9.0.3
     vue-router: ^3.5.4
     vue-tsc: ^0.38.2
+    vuetify: ^2.6.7
     vuex: ^3.6.2
   peerDependencies:
+    vue: ^2.7.0
     vue-router: ^3.5.4
+    vuetify: ^2.6.7
     vuex: ^3.6.2
   peerDependenciesMeta:
+    vuetify:
+      optional: true
     vuex:
       optional: true
   languageName: unknown
@@ -4243,6 +4248,15 @@ __metadata:
     "@vue/compiler-sfc": 2.7.0
     csstype: ^3.1.0
   checksum: 4adaa4a8ec2b12ee2251baa8b5084b9883d36f78bf54c06c46e3da230d134f38b8c60e50599d4a5f9f4bb5b7d6a0412022d8ca4ae4c8a78aeb3ef78962643b18
+  languageName: node
+  linkType: hard
+
+"vuetify@npm:^2.6.7":
+  version: 2.6.7
+  resolution: "vuetify@npm:2.6.7"
+  peerDependencies:
+    vue: ^2.6.4
+  checksum: 1514c31738dd15970ee7fc9824b2ee6e83da581bd5a99f912561c820ec14f922cc3ca914afa102d4a56bbfc16f78722cfe69d1e5c3ab75f46a32bb3b6623745a
   languageName: node
   linkType: hard
 
