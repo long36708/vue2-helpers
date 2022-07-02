@@ -1,98 +1,105 @@
-import Vue from 'vue'
-import { getCurrentInstance, reactive } from '@vue/composition-api'
-import VueRouter, { NavigationGuard, Route, RouterOptions } from 'vue-router'
-import { OUT_OF_SCOPE, warn } from './utils'
+import Vue, { getCurrentInstance, reactive } from 'vue';
+import VueRouter, { NavigationGuard, Route, RouterOptions } from 'vue-router';
+import { OUT_OF_SCOPE, warn } from './utils';
 
-
-export {
-    RouteMeta,
-    RouterOptions,
-    RouteRecord,
-    RouteConfig as RouteRecordRaw,
-    RedirectOption as RouteRecordRedirectOption,
-    RawLocation as RouteLocationRaw,
-} from 'vue-router'
-export type RouteRecordName = string | symbol
-export type RouterScrollBehavior = RouterOptions['scrollBehavior']
-export type RouteLocationNormalized = Route
-export type RouteLocationNormalizedLoaded = Route
-
+export type {
+  RouteMeta,
+  RouterOptions,
+  RouteRecord,
+  RouteConfig as RouteRecordRaw,
+  RedirectOption as RouteRecordRedirectOption,
+  RawLocation as RouteLocationRaw,
+} from 'vue-router';
+export type RouteRecordName = string | symbol;
+export type RouterScrollBehavior = RouterOptions['scrollBehavior'];
+export type RouteLocationNormalized = Route;
+export type RouteLocationNormalizedLoaded = Route;
 
 export interface Router extends VueRouter {
-    isReady: () => Promise<void>
+  isReady: () => Promise<void>;
 
-    /** @deprecated */
-    app: VueRouter['app']
+  /** @deprecated */
+  app: VueRouter['app'];
 
-    /** @deprecated */
-    getMatchedComponents: VueRouter['getMatchedComponents']
+  /** @deprecated */
+  getMatchedComponents: VueRouter['getMatchedComponents'];
 
-    /** @deprecated use `isReady` instead */
-    onReady: VueRouter['onReady']
+  /** @deprecated use `isReady` instead */
+  onReady: VueRouter['onReady'];
 }
-
 
 // @ts-ignore
 VueRouter.prototype.isReady = function () {
-    return new Promise((resolve, reject) => {
-        this.onReady(resolve, reject)
-    })
-}
+  return new Promise((resolve, reject) => {
+    this.onReady(resolve, reject);
+  });
+};
 
-
+/** Create Vue Router */
 export function createRouter(options: RouterOptions) {
-    Vue.use(VueRouter)
-    return new VueRouter(options) as Router
+  Vue.use(VueRouter);
+  return new VueRouter(options) as Router;
 }
 
-
+/** Get Router instance */
 export function useRouter(): Router {
-    const inst = getCurrentInstance()
-    if (inst) {
-        return inst.proxy.$router as Router
-    }
-    warn(OUT_OF_SCOPE)
-    return undefined as any
+  const inst = getCurrentInstance();
+  if (inst) {
+    return inst.proxy.$router as Router;
+  }
+  warn('[vue-router] ' + OUT_OF_SCOPE);
+  return undefined as any;
 }
 
+let currentRoute: RouteLocationNormalizedLoaded;
 
-let currentRoute: RouteLocationNormalizedLoaded
-
+/** Get current route instance */
 export function useRoute() {
-    const router = useRouter()
-    if (!currentRoute) {
-        const inst = getCurrentInstance()
-        if (!inst) {
-            warn(OUT_OF_SCOPE)
-            return
-        }
-        currentRoute = reactive({...inst.proxy.$route} as Route)
-        router.afterEach(to => Object.assign(currentRoute, to))
+  const router = useRouter();
+  if (!currentRoute) {
+    const inst = getCurrentInstance();
+    if (!inst) {
+      warn(`[vue-router] ${OUT_OF_SCOPE}`);
+      return;
     }
-    return currentRoute
+    currentRoute = reactive({ ...inst.proxy.$route } as Route);
+    router.afterEach(to => Object.assign(currentRoute, to));
+  }
+  return currentRoute;
 }
 
-
+/**
+ * Attach leave current page event
+ *
+ * @param leaveGuard - Navigation Guard
+ * @returns
+ */
 export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
-    const inst = getCurrentInstance()
-    if (!inst) {
-        warn(OUT_OF_SCOPE)
-        return
-    }
-    const { options } = inst.proxy.constructor as any
-    const hooks: any = options.beforeRouteLeave || []
-    hooks.push(leaveGuard)
-    options.beforeRouteLeave = hooks
+  const inst = getCurrentInstance();
+  if (!inst) {
+    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    return;
+  }
+  const { options } = inst.proxy.constructor as any;
+  const hooks: any = options.beforeRouteLeave || [];
+  hooks.push(leaveGuard);
+  options.beforeRouteLeave = hooks;
 }
 
+/**
+ * Attach route before update event
+ *
+ * @param updateGuard - Navigation Guard
+ * @returns
+ */
 export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
-    const inst = getCurrentInstance()
-    if (!inst) {
-        warn(OUT_OF_SCOPE)
-        return
-    }
-    const { options } = inst.proxy.constructor as any
-    const hooks: any = options.beforeRouteUpdate || []
-    hooks.push(updateGuard)
-    options.beforeRouteUpdate = hooks
+  const inst = getCurrentInstance();
+  if (!inst) {
+    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    return;
+  }
+  const { options } = inst.proxy.constructor as any;
+  const hooks: any = options.beforeRouteUpdate || [];
+  hooks.push(updateGuard);
+  options.beforeRouteUpdate = hooks;
 }
