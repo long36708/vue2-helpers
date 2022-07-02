@@ -1,7 +1,6 @@
-import { getCurrentInstance } from 'vue';
+import Vue, { getCurrentInstance } from 'vue';
 import type { Framework, UserVuetifyPreset } from 'vuetify';
 import Vuetify from 'vuetify';
-import Vue from 'vue';
 import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuetify */
