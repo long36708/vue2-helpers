@@ -9,6 +9,9 @@ compile('src/index.ts');
 compile('src/vuex.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
+// copyFile('package.json');
+// copyFile('README.md');
+// copyFile('LICENSE');
 
 /**
  * Compile

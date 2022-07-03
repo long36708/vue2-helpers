@@ -1,5 +1,9 @@
 import Vue, { getCurrentInstance, reactive } from 'vue';
-import VueRouter, { NavigationGuard, Route, RouterOptions } from 'vue-router';
+import VueRouter, {
+  type NavigationGuard,
+  type Route,
+  type RouterOptions,
+} from 'vue-router';
 import { OUT_OF_SCOPE, warn } from './utils';
 
 export type {
@@ -47,7 +51,7 @@ export function useRouter(): Router {
   if (inst) {
     return inst.proxy.$router as Router;
   }
-  warn('[vue-router] ' + OUT_OF_SCOPE);
+  warn(`[vue-router] ${OUT_OF_SCOPE}`);
   return undefined as any;
 }
 
@@ -69,7 +73,7 @@ export function useRoute() {
 }
 
 /**
- * Attach leave current page event
+ * Attach leave current route event
  *
  * @param leaveGuard - Navigation Guard
  * @returns

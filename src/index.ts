@@ -1,5 +1,5 @@
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
-import { ComputedRef, computed, getCurrentInstance } from 'vue';
+import { computed, getCurrentInstance, type ComputedRef } from 'vue';
 
 type ActionReturnType<T extends (...args: any) => any> = Promise<
   T extends (...args: any) => Promise<infer U> ? U : ReturnType<T>
@@ -64,8 +64,8 @@ export function createVuexHelpers<
 
 /**
  * Get Vuex state
- * @param args - store name
- * @returns
+ *
+ * @param args - state name
  */
 function useState(...args: [any]) {
   const states = mapState(...args);
@@ -78,6 +78,8 @@ function useState(...args: [any]) {
 
 /**
  * Get Vuex Getters
+ *
+ * @param args - getter name
  */
 function useGetters(...args: [any]) {
   const getters = mapGetters(...args);

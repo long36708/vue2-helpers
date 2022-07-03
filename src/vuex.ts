@@ -1,4 +1,4 @@
-import Vuex, { Store, StoreOptions } from 'vuex';
+import Vuex, { Store, type StoreOptions } from 'vuex';
 import Vue, { getCurrentInstance } from 'vue';
 import { OUT_OF_SCOPE, warn } from './utils';
 
@@ -8,7 +8,7 @@ export function createStore<S>(options: StoreOptions<S>) {
   return new Store<S>(options);
 }
 
-/** Use Vuex Instance */
+/** Get Vuex Instance */
 export function useStore<S = any>(): Store<S> {
   const inst = getCurrentInstance();
   if (inst) {

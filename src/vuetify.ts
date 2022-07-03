@@ -1,10 +1,10 @@
 import Vue, { getCurrentInstance } from 'vue';
 import type { Framework, UserVuetifyPreset } from 'vuetify';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuetify */
-export function createVuetify(options: Partial<UserVuetifyPreset>): Vuetify {
+export function createVuetify(options?: Partial<UserVuetifyPreset>): Vuetify {
   Vue.use(Vuetify);
   return new Vuetify(options);
 }
