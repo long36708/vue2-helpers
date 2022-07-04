@@ -18,8 +18,8 @@ npm i -S vue2-helpers
 ## 📃 Usage
 
 ```javascript
-import { createVuexHelpers } from 'vue2-helpers';
-import { useRouter } from 'vue2-helpers/vue-router';
+import { createVuexHelpers } from '@logue/vue2-helpers';
+import { useRouter } from '@logue/vue2-helpers/vue-router';
 
 const { useState } = createVuexHelpers<
     RootState, RootGetters, RootMutations, RootActions
@@ -59,10 +59,9 @@ router.push('/login');
 
 ### vue2-helpers/vuetify
 
-| Features                                             | Description |
-| ---------------------------------------------------- | ----------- |
-| `createVuetify`(options: UserVuetifyPreset): Vuetify |             |
-| `useVuetify`(): Framework                            |             |
+| Features                  | Description |
+| ------------------------- | ----------- |
+| `useVuetify`(): Framework |             |
 
 ## License
 
