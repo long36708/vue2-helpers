@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A util package to use Vue 2 with Composition API easily",
   "author": {
     "name": "Ambit Tsai",
@@ -14,19 +14,24 @@
     }
   ],
   "license": "Apache-2.0",
-  "main": "./dist/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     },
     "./vuex": {
-      "import": "./dist/vuex.js"
+      "import": "./dist/vuex.es.js",
+      "require": "./dist/vuex.umd.js"
     },
     "./vue-router": {
-      "import": "./dist/vue-router.js"
+      "import": "./dist/vue-router.es.js",
+      "require": "./dist/vue-router.umd.js"
     },
     "./vuetify": {
-      "import": "./dist/vuetify.js"
+      "import": "./dist/vuetify.es.js",
+      "require": "./dist/vuetify.umd.js"
     }
   },
   "types": "./dist/index.d.ts",
@@ -70,18 +75,16 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/eslint": "^8.4.5",
-    "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.3",
-    "@typescript-eslint/parser": "^5.30.3",
-    "@vue/eslint-config-prettier": "^7.0.0",
+    "@types/node": "^18.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.4",
+    "@typescript-eslint/parser": "^5.30.4",
     "eslint": "^8.19.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.1.5",
-    "eslint-plugin-html": "^6.2.0",
+    "eslint-import-resolver-typescript": "^3.2.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.3.3",
-    "eslint-plugin-json-schema-validator": "^3.1.1",
     "eslint-plugin-jsonc": "^2.3.1",
     "eslint-plugin-tsdoc": "^0.2.16",
     "husky": "^8.0.1",
@@ -93,7 +96,6 @@
     "sass": "1.32.12",
     "typescript": "^4.7.4",
     "vue": "^2.7.0",
-    "vue-eslint-parser": "^9.0.3",
     "vue-router": "^3.5.4",
     "vue-tsc": "^0.38.2",
     "vuetify": "^2.6.7",
@@ -105,7 +107,6 @@
     }
   },
   "lint-staged": {
-    "*.vue": "vue-tsc --noEmit",
     "*.{js,ts,json,md}": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint",
     "*": "prettier -w -u"
   },

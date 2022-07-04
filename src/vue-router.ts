@@ -21,15 +21,6 @@ export type RouteLocationNormalizedLoaded = Route;
 
 export interface Router extends VueRouter {
   isReady: () => Promise<void>;
-
-  /** @deprecated */
-  app: VueRouter['app'];
-
-  /** @deprecated */
-  getMatchedComponents: VueRouter['getMatchedComponents'];
-
-  /** @deprecated use `isReady` instead */
-  onReady: VueRouter['onReady'];
 }
 
 // @ts-ignore
@@ -40,7 +31,7 @@ VueRouter.prototype.isReady = function () {
 };
 
 /** Create Vue Router */
-export function createRouter(options: RouterOptions) {
+export function createRouter(options?: RouterOptions) {
   Vue.use(VueRouter);
   return new VueRouter(options) as Router;
 }
@@ -78,7 +69,7 @@ export function useRoute() {
  * @param leaveGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
+export function onBeforeRouteLeave(leaveGuard?: NavigationGuard) {
   const inst = getCurrentInstance();
   if (!inst) {
     warn(`[vue-router] ${OUT_OF_SCOPE}`);
@@ -96,7 +87,7 @@ export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
  * @param updateGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
+export function onBeforeRouteUpdate(updateGuard?: NavigationGuard) {
   const inst = getCurrentInstance();
   if (!inst) {
     warn(`[vue-router] ${OUT_OF_SCOPE}`);
