@@ -1,15 +1,15 @@
-/* eslint-disable */
+/* eslint-disable no-undef */
 const { rollup } = require('rollup');
 const typescript = require('@rollup/plugin-typescript');
 const { terser } = require('rollup-plugin-terser');
 const banner = require('./banner.js');
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
 
 compile('src/index.ts');
-compile('src/vuex.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
+compile('src/vuex.ts');
 // copyFile('package.json');
 // copyFile('README.md');
 // copyFile('LICENSE');
@@ -20,6 +20,7 @@ compile('src/vuetify.ts');
  * @param file - target
  */
 async function compile(file) {
+  console.log(`compile: ${file}`);
   const name = path.parse(file).name;
   const bundle = await rollup({
     input: file,
@@ -53,13 +54,14 @@ async function compile(file) {
   });
 }
 
-/**
+/* *
  * File Copy
  *
  * @param file - File name
- */
+ * /
 function copyFile(file) {
   fs.copyFile(file, `dist/${file}`, err => {
     if (err) console.log(err);
   });
 }
+*/
