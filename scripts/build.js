@@ -3,16 +3,12 @@ const { rollup } = require('rollup');
 const typescript = require('@rollup/plugin-typescript');
 const { terser } = require('rollup-plugin-terser');
 const banner = require('./banner.js');
-// const fs = require('fs');
 const path = require('path');
 
 compile('src/index.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
 compile('src/vuex.ts');
-// copyFile('package.json');
-// copyFile('README.md');
-// copyFile('LICENSE');
 
 /**
  * Compile
@@ -30,7 +26,7 @@ async function compile(file) {
   await bundle.write({
     output: {
       banner,
-      file: `dist/${name}.es.js`,
+      file: `${name}.es.js`,
       format: 'esm',
       sourcemap: true,
     },
@@ -39,7 +35,7 @@ async function compile(file) {
     output: {
       banner,
       name: name,
-      file: `dist/${name}.umd.js`,
+      file: `${name}.umd.js`,
       format: 'umd',
       sourcemap: true,
       exports: 'named',
@@ -53,15 +49,3 @@ async function compile(file) {
     },
   });
 }
-
-/* *
- * File Copy
- *
- * @param file - File name
- * /
-function copyFile(file) {
-  fs.copyFile(file, `dist/${file}`, err => {
-    if (err) console.log(err);
-  });
-}
-*/

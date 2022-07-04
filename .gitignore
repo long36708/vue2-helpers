@@ -7,6 +7,9 @@
 node_modules
 .DS_Store
 dist
-dist-ssr
-*.local
-/src/Meta.ts
+./*.es.js
+./*.es.js.map
+./*.umd.js
+./*.umd.js.map
+./*.d.ts
+./*.d.ts.map

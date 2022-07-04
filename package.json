@@ -14,29 +14,38 @@
     }
   ],
   "license": "Apache-2.0",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "index.umd.js",
+  "module": "index.es.js",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "import": "./index.es.js",
+      "require": "./index.umd.js",
+      "types": "./index.d.ts"
     },
     "./vuex": {
-      "import": "./dist/vuex.es.js",
-      "require": "./dist/vuex.umd.js"
+      "import": "./vuex.es.js",
+      "require": "./vuex.umd.js",
+      "types": "./vuex.d.ts"
     },
     "./vue-router": {
-      "import": "./dist/vue-router.es.js",
-      "require": "./dist/vue-router.umd.js"
+      "import": "./vue-router.es.js",
+      "require": "./vue-router.umd.js",
+      "types": "./vue-router.d.ts"
     },
     "./vuetify": {
-      "import": "./dist/vuetify.es.js",
-      "require": "./dist/vuetify.umd.js"
+      "import": "./vuetify.es.js",
+      "require": "./vuetify.umd.js",
+      "types": "./vuetify.d.ts"
     }
   },
-  "types": "./dist/index.d.ts",
   "files": [
-    "/dist"
+    "./*.d.ts",
+    "./*.d.ts.map",
+    "./*.es.js",
+    "./*.es.js.map",
+    "./*.umd.js",
+    "./*.umd.js.map"
   ],
   "sideEffects": false,
   "engines": {
@@ -47,7 +56,7 @@
   "scripts": {
     "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
     "build": "node scripts/build.js && vue-tsc --declaration --emitDeclarationOnly",
-    "build:clean": "rimraf dist",
+    "build:clean": "node scripts/clean.js",
     "prepare": "husky install"
   },
   "repository": {
