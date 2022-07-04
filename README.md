@@ -11,8 +11,14 @@ This fork supports Vue 2.7.0 and Vuetify.
 
 ## ⬇️ Install
 
+```sh
+npm i -S @logue/vue2-helpers
 ```
-npm i -S vue2-helpers
+
+or
+
+```sh
+yarn add -D @logue/vue2-helpers
 ```
 
 ## 📃 Usage
