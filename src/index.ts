@@ -1,5 +1,5 @@
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
-import { computed, getCurrentInstance, type ComputedRef } from 'vue';
+import { computed, getCurrentInstance, type ComputedRef } from 'vue-demi';
 
 type ActionReturnType<T extends (...args: any) => any> = Promise<
   T extends (...args: any) => Promise<infer U> ? U : ReturnType<T>

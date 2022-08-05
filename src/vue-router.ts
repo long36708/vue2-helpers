@@ -1,4 +1,4 @@
-import Vue, { getCurrentInstance, reactive } from 'vue';
+import { getCurrentInstance, reactive, Vue2 } from 'vue-demi';
 import VueRouter, {
   type NavigationGuard,
   type Route,
@@ -32,7 +32,7 @@ VueRouter.prototype.isReady = function () {
 
 /** Create Vue Router */
 export function createRouter(options?: RouterOptions) {
-  Vue.use(VueRouter);
+  Vue2?.use(VueRouter);
   return new VueRouter(options) as Router;
 }
 

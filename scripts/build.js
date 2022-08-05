@@ -20,7 +20,7 @@ async function compile(file) {
   const name = path.parse(file).name;
   const bundle = await rollup({
     input: file,
-    external: ['vue', 'vuex', 'vue-router', 'vuetify'],
+    external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify'],
     plugins: [typescript()],
   });
   await bundle.write({
@@ -43,9 +43,10 @@ async function compile(file) {
         vue: 'Vue',
         vuex: 'Vuex',
         'vue-router': 'VueRouter',
+        'vue-demi': 'VueDemi',
         vuetify: 'Vuetify',
       },
-      plugins: [terser()],
     },
+    plugins: [terser()],
   });
 }

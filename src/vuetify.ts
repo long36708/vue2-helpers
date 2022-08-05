@@ -1,4 +1,4 @@
-import { getCurrentInstance } from 'vue';
+import { getCurrentInstance } from 'vue-demi';
 import type { Framework } from 'vuetify';
 import { OUT_OF_SCOPE, warn } from './utils';
 
