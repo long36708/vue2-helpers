@@ -5,10 +5,12 @@ const { terser } = require('rollup-plugin-terser');
 const banner = require('./banner.js');
 const path = require('path');
 
+console.log('Build:');
 compile('src/index.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
 compile('src/vuex.ts');
+console.log('done.');
 
 /**
  * Compile

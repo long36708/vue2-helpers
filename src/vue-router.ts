@@ -1,26 +1,40 @@
-import { getCurrentInstance, reactive, Vue2 } from 'vue-demi';
+import { effectScope, getCurrentInstance, reactive, Vue2 } from 'vue-demi';
 import VueRouter, {
   type NavigationGuard,
   type Route,
-  type RouterOptions,
+  type RouterOptions as RawRouterOptions,
+  type RouteConfig as RouteRecordRaw,
 } from 'vue-router';
 import { OUT_OF_SCOPE, warn } from './utils';
 
+export type { NavigationGuard, RouteRecordRaw };
 export type {
   RouteMeta,
-  RouterOptions,
   RouteRecord,
-  RouteConfig as RouteRecordRaw,
   RedirectOption as RouteRecordRedirectOption,
   RawLocation as RouteLocationRaw,
 } from 'vue-router';
-export type RouteRecordName = string | symbol;
-export type RouterScrollBehavior = RouterOptions['scrollBehavior'];
+export type RouterScrollBehavior = RawRouterOptions['scrollBehavior'];
 export type RouteLocationNormalized = Route;
 export type RouteLocationNormalizedLoaded = Route;
+export type RouteRecordName = string | symbol;
+
+export interface RouterOptions extends RawRouterOptions {
+  routes: RouteRecordRaw[];
+  scrollBehavior?: RouterScrollBehavior;
+}
 
 export interface Router extends VueRouter {
-  isReady: () => Promise<void>;
+  isReady(): Promise<void>;
+
+  /** @deprecated */
+  app: VueRouter['app'];
+
+  /** @deprecated use `currentRoute.matched` instead */
+  getMatchedComponents: VueRouter['getMatchedComponents'];
+
+  /** @deprecated use `isReady` instead */
+  onReady: VueRouter['onReady'];
 }
 
 // @ts-ignore
@@ -49,16 +63,21 @@ export function useRouter(): Router {
 let currentRoute: RouteLocationNormalizedLoaded;
 
 /** Get current route instance */
-export function useRoute() {
-  const router = useRouter();
+export function useRoute(): RouteLocationNormalizedLoaded {
+  const inst = getCurrentInstance();
+  if (!inst) {
+    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    return undefined as any;
+  }
   if (!currentRoute) {
-    const inst = getCurrentInstance();
-    if (!inst) {
-      warn(`[vue-router] ${OUT_OF_SCOPE}`);
-      return;
-    }
-    currentRoute = reactive({ ...inst.proxy.$route } as Route);
-    router.afterEach(to => Object.assign(currentRoute, to));
+    const scope = effectScope(true);
+    scope.run(() => {
+      const { $router } = inst.proxy;
+      currentRoute = reactive(assign({}, $router.currentRoute)) as any;
+      $router.afterEach(to => {
+        assign(currentRoute, to);
+      });
+    });
   }
   return currentRoute;
 }
@@ -69,7 +88,7 @@ export function useRoute() {
  * @param leaveGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteLeave(leaveGuard?: NavigationGuard) {
+export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
   const inst = getCurrentInstance();
   if (!inst) {
     warn(`[vue-router] ${OUT_OF_SCOPE}`);
@@ -87,7 +106,7 @@ export function onBeforeRouteLeave(leaveGuard?: NavigationGuard) {
  * @param updateGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteUpdate(updateGuard?: NavigationGuard) {
+export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
   const inst = getCurrentInstance();
   if (!inst) {
     warn(`[vue-router] ${OUT_OF_SCOPE}`);
@@ -97,4 +116,17 @@ export function onBeforeRouteUpdate(updateGuard?: NavigationGuard) {
   const hooks: any = options.beforeRouteUpdate || [];
   hooks.push(updateGuard);
   options.beforeRouteUpdate = hooks;
+}
+
+/**
+ *
+ * @param target -
+ * @param source -
+ * @returns
+ */
+function assign(target: Record<string, any>, source: Record<string, any>) {
+  for (const key of Object.keys(source)) {
+    target[key] = source[key];
+  }
+  return target;
 }

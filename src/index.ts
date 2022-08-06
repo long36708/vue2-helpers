@@ -1,6 +1,6 @@
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import { computed, getCurrentInstance, type ComputedRef } from 'vue-demi';
-
+import { OUT_OF_SCOPE } from './utils';
 type ActionReturnType<T extends (...args: any) => any> = Promise<
   T extends (...args: any) => Promise<infer U> ? U : ReturnType<T>
 >;
@@ -98,7 +98,7 @@ function getVueInstance() {
   if (vm) {
     return vm.proxy;
   }
-  throw new Error('helper method only works during setup or Lifecycle Hooks');
+  throw new Error(OUT_OF_SCOPE);
 }
 
 /**
