@@ -50,15 +50,15 @@ export function createRouter(options?: RouterOptions) {
 /**
  * Get Router instance
  *
- * @deprecated use `vue-router/composable`.
+ * @deprecated use `vue-router/composables`.
  */
 export function useRouter(): Router {
-  warn(`[vue-router] ${DEPRECATED_ROUTER('useRouter')}`);
+  warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('useRouter')}`);
   const inst = getCurrentInstance();
   if (inst) {
     return inst.proxy.$router as Router;
   }
-  warn(`[vue-router] ${OUT_OF_SCOPE}`);
+  warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
   return undefined as any;
 }
 
@@ -67,13 +67,13 @@ let currentRoute: RouteLocationNormalizedLoaded;
 /**
  * Get current route instance
  *
- * @deprecated use `vue-router/composable`.
+ * @deprecated use `vue-router/composables`.
  */
 export function useRoute(): RouteLocationNormalizedLoaded {
-  warn(`[vue-router] ${DEPRECATED_ROUTER('useRoute')}`);
+  warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('useRoute')}`);
   const inst = getCurrentInstance();
   if (!inst) {
-    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return undefined as any;
   }
   if (!currentRoute) {
@@ -92,15 +92,15 @@ export function useRoute(): RouteLocationNormalizedLoaded {
 /**
  * Attach leave current route event
  *
- * @deprecated use `vue-router/composable`.
+ * @deprecated use `vue-router/composables`.
  * @param leaveGuard - Navigation Guard
  * @returns
  */
 export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
-  warn(`[vue-router] ${DEPRECATED_ROUTER('onBeforeRouteLeave')}`);
+  warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('onBeforeRouteLeave')}`);
   const inst = getCurrentInstance();
   if (!inst) {
-    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return;
   }
   const { options } = inst.proxy.constructor as any;
@@ -112,15 +112,15 @@ export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
 /**
  * Attach route before update event
  *
- * @deprecated use `vue-router/composable`.
+ * @deprecated use `vue-router/composables`.
  * @param updateGuard - Navigation Guard
  * @returns
  */
 export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
-  warn(`[vue-router] ${DEPRECATED_ROUTER('onBeforeRouteUpdate')}`);
+  warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('onBeforeRouteUpdate')}`);
   const inst = getCurrentInstance();
   if (!inst) {
-    warn(`[vue-router] ${OUT_OF_SCOPE}`);
+    warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return;
   }
   const { options } = inst.proxy.constructor as any;

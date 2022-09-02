@@ -10,7 +10,7 @@ export function useVuetify(): Framework {
     // @ts-ignore
     return instance.proxy.$vuetify;
   } else {
-    warn(`[vuetify] ${OUT_OF_SCOPE}`);
+    warn(`[vue2-helpers/vuetify] ${OUT_OF_SCOPE}`);
   }
   return undefined as any;
 }

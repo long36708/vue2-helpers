@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
     "vue2",
@@ -83,7 +83,7 @@
   "peerDependencies": {
     "@vue/composition-api": "^1.7.0",
     "vue": "^2.0.0 || <3.0.0",
-    "vue-router": "^3.6.4",
+    "vue-router": ">=3.6.4",
     "vuetify": "^2.6.9",
     "vuex": "^3.6.2"
   },
