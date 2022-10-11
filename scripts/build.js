@@ -10,6 +10,7 @@ compile('src/index.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
 compile('src/vuex.ts');
+compile('src/teleport.ts');
 console.log('done.');
 
 /**

@@ -6,6 +6,7 @@ removeFile('vue-router');
 removeFile('vuetify');
 removeFile('vuex');
 removeFile('utils', ['d.ts', 'd.ts.map']);
+removeFile('teleport');
 
 /**
  * Remove File
