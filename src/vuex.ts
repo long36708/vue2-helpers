@@ -4,7 +4,7 @@ import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuex Store */
 export function createStore<S>(options: StoreOptions<S>) {
-  Vue2?.use(Vuex);
+  Vue2.use(Vuex);
   return new Store<S>(options);
 }
 

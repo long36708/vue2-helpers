@@ -205,7 +205,7 @@ __metadata:
   peerDependencies:
     "@vue/composition-api": ^1.7.0
     vue: ^2.0.0 || <3.0.0
-    vue-router: ">=3.6.4"
+    vue-router: ^3.6.5
     vuetify: ^2.6.11
     vuex: ^3.6.2
   peerDependenciesMeta:

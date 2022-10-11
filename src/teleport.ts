@@ -215,3 +215,9 @@ export const Teleport = defineComponent({
 const install = (app: any) => app.component('Teleport', Teleport);
 
 export { Teleport as default, install };
+
+// @ts-ignore
+if (typeof window !== 'undefined' && window.Vue) {
+  // @ts-ignore
+  window.Vue.use(Teleport);
+}

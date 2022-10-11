@@ -47,7 +47,9 @@ interface Helper<RMK extends ResultMapKey, RootType> {
   ): HelperReturnType<RMK, K, N extends keyof RootType ? RootType[N] : {}>;
 }
 
-/** Vuex Helper functions */
+/**
+ * Vuex Helper functions
+ */
 export function createVuexHelpers<
   RootState,
   RootGetters,
@@ -102,7 +104,8 @@ function getVueInstance() {
 }
 
 /**
- * Get Vuex Mutations
+ * Get Vuex Mutations.
+ *
  * @param args - mutation name
  * @returns
  */

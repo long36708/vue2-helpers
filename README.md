@@ -44,9 +44,9 @@ router.push('/login');
 
 ### vue2-helpers
 
-| Features                                                                                                                                                                                                        | Description                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `createVuexHelpers`&lt;<br />&nbsp;&nbsp;&nbsp;&nbsp;RootState, RootGetters, RootMutations, RootActions<br />&gt;(): {<br>&nbsp;&nbsp;&nbsp;&nbsp;`useState`, `useGetters`, `useMutations`, `useActions`<br />} | The helper methods in return value are<br />used to replace `mapState`, `mapGetters`,<br />`mapMutations`, `mapActions` |
+| Features                                                                                                                                  | Description                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `createVuexHelpers`&lt;RootState, RootGetters, RootMutations, RootActions&gt;(): {`useState`, `useGetters`, `useMutations`, `useActions`} | The helper methods in return value are used to replace `mapState`, `mapGetters`, `mapMutations`, `mapActions` |
 
 ### vue2-helpers/vuex
 
@@ -57,20 +57,21 @@ router.push('/login');
 
 ### vue2-helpers/vue-router
 
-| Features                                                  | Description         |
-| --------------------------------------------------------- | ------------------- |
-| `createRouter`(options: RouterOptions): Router            |                     |
-| `onBeforeRouteLeave`(leaveGuard: NavigationGuard): void   |                     |
-| `onBeforeRouteUpdate`(updateGuard: NavigationGuard): void |                     |
-| `useRoute`(): RouteLocationNormalized                     | Get Route instance  |
-| `useRouter`(): Router                                     | Get Router instance |
-| router.`isReady`(): Promise\<void\>                       |                     |
+| Features                                                      | Description         |
+| ------------------------------------------------------------- | ------------------- |
+| `createRouter`(options: RouterOptions): Router                |                     |
+| ~~`onBeforeRouteLeave`(leaveGuard: NavigationGuard): void~~   |                     |
+| ~~`onBeforeRouteUpdate`(updateGuard: NavigationGuard): void~~ |                     |
+| ~~`useRoute`(): RouteLocationNormalized~~                     | Get Route instance  |
+| ~~`useRouter`(): Router~~                                     | Get Router instance |
+| router.`isReady`(): Promise\<void\>                           |                     |
 
 ### vue2-helpers/vuetify
 
-| Features                  | Description           |
-| ------------------------- | --------------------- |
-| `useVuetify`(): Framework | Get Vuetify Instance. |
+| Features                                             | Description             |
+| ---------------------------------------------------- | ----------------------- |
+| `createVuetify`(options: UserVuetifyPreset): Vuetify | Create Vuetify Instance |
+| `useVuetify`(): Framework                            | Get Vuetify Instance.   |
 
 ## vue-helpers/teleport
 
@@ -111,16 +112,18 @@ export default defineComponent({
 </script>
 ```
 
-This component is rewritten to composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
+| Props    | Description                                          |
+| -------- | ---------------------------------------------------- |
+| to       | Target DOM (querySelector)                           |
+| where    | Insert innerHTML to target DOM, `after` or `before`. |
+| disabled | boolean                                              |
+
+This component is rewritten composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
 
 ## License
 
 [MIT](LICENSE)
 
-## ☎️ Contact
+Original version By [ambit_tsai](https://github.com/ambit-tsai).
 
-- WeChat: ambit_tsai
-- QQ Group: 663286147
-- E-mail: ambit_tsai@qq.com
-
-Modified by [Logue](https://logue.dev/).
+Modified and add some feature by [Logue](https://github.com/logue).
