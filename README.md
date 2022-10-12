@@ -57,6 +57,9 @@ router.push('/login');
 
 ### vue2-helpers/vue-router
 
+The dashed lines are left for compatibility, but since equivalent commands are supported on the [vue-router](https://github.com/vuejs/vue-router/blob/dev/CHANGELOG.md#360-2022-08-22) side, they are flagged as `deprecated`. 
+Please use them from now on.
+
 | Features                                                      | Description         |
 | ------------------------------------------------------------- | ------------------- |
 | `createRouter`(options: RouterOptions): Router                |                     |
@@ -73,9 +76,23 @@ router.push('/login');
 | `createVuetify`(options: UserVuetifyPreset): Vuetify | Create Vuetify Instance |
 | `useVuetify`(): Framework                            | Get Vuetify Instance.   |
 
-## vue-helpers/teleport
+### vue-helpers/teleport
 
-This is an alternative to [vue3's teleport](https://v3.vuejs.org/guide/teleport.html) component. You can use the documentation provided by vue as a starting point to using this package.
+This is an alternative to [vue3's teleport](https://v3.vuejs.org/guide/teleport.html) component. You can use the documentation provided by vue as a starting point to using this package. 
+
+| Props    | Description                                                                       |
+| -------- | --------------------------------------------------------------------------------- |
+| to       | Target DOM (Specified by `querySelector`)                                         |
+| where    | Insert innerHTML to target DOM. Accepts `after` or `before`. (Default is `after`) |
+| disabled | boolean                                                                           |
+
+This component works standalone from a CDN.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@2.1.1/teleport.umd.js"></script>
+```
+
+#### Teleport Example
 
 ```vue
 <template>
@@ -112,18 +129,11 @@ export default defineComponent({
 </script>
 ```
 
-| Props    | Description                                          |
-| -------- | ---------------------------------------------------- |
-| to       | Target DOM (querySelector)                           |
-| where    | Insert innerHTML to target DOM, `after` or `before`. |
-| disabled | boolean                                              |
-
 This component is rewritten to composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
 
 ## License
 
-[MIT](LICENSE)
+[Apache License 2.0](LICENSE)
 
-Original version By [ambit_tsai](https://github.com/ambit-tsai).
-
-Modified and add some feature by [Logue](https://github.com/logue).
+* Original version By [ambit_tsai](https://github.com/ambit-tsai).
+* Modified and add some feature by [Logue](https://github.com/logue).
