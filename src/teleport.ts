@@ -113,7 +113,7 @@ export const Teleport = defineComponent({
       parent.value = null;
     };
 
-    const getFragment = () => {
+    const getFragment = (): DocumentFragment => {
       // Using a fragment is faster because it'll trigger only a single reflow
       // See https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
       const fragment = document.createDocumentFragment();

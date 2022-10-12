@@ -1,11 +1,11 @@
 import { getCurrentInstance, Vue2 } from 'vue-demi';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import type { Framework, UserVuetifyPreset } from 'vuetify';
 
 import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuetify Instance */
-export function createVuetify(options: UserVuetifyPreset): Vuetify {
+export function createVuetify(options?: UserVuetifyPreset): Vuetify {
   Vue2.use(Vuetify);
   return new Vuetify(options);
 }

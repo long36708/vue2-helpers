@@ -3,7 +3,7 @@ import { getCurrentInstance, Vue2 } from 'vue-demi';
 import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuex Store */
-export function createStore<S>(options: StoreOptions<S>) {
+export function createStore<S>(options: StoreOptions<S>): Store<S> {
   Vue2.use(Vuex);
   return new Store<S>(options);
 }

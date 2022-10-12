@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 const { rollup } = require('rollup');
-const typescript = require('@rollup/plugin-typescript');
 const { terser } = require('rollup-plugin-terser');
 const banner = require('./banner.js');
 const path = require('path');
+const typescript = require('@rollup/plugin-typescript');
+const vuetify = require('rollup-plugin-vuetify');
 
 console.log('Build:');
 compile('src/index.ts');
@@ -23,15 +24,23 @@ async function compile(file) {
   const name = path.parse(file).name;
   const bundle = await rollup({
     input: file,
-    external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify'],
-    plugins: [typescript()],
+    external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify/lib'],
+    plugins: [typescript(), vuetify()],
   });
+  const globals = {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    'vue-demi': 'VueDemi',
+    'vuetify/lib': 'vuetify',
+  };
   await bundle.write({
     output: {
       banner,
       file: `${name}.es.js`,
       format: 'esm',
       sourcemap: true,
+      globals: globals,
     },
   });
   await bundle.write({
@@ -42,13 +51,7 @@ async function compile(file) {
       format: 'umd',
       sourcemap: true,
       exports: 'named',
-      globals: {
-        vue: 'Vue',
-        vuex: 'Vuex',
-        'vue-router': 'VueRouter',
-        'vue-demi': 'VueDemi',
-        vuetify: 'Vuetify',
-      },
+      globals: globals,
     },
     plugins: [terser()],
   });

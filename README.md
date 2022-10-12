@@ -97,7 +97,7 @@ This is an alternative to [vue3's teleport](https://v3.vuejs.org/guide/teleport.
 
 <script>
 import { defineComponent, ref } from 'vue';
-import Teleport from 'vue2-teleport';
+import Teleport from '@logue/vue2-helpers/teleport';
 
 export default defineComponent({
   components: {
@@ -118,7 +118,7 @@ export default defineComponent({
 | where    | Insert innerHTML to target DOM, `after` or `before`. |
 | disabled | boolean                                              |
 
-This component is rewritten composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
+This component is rewritten to composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
 
 ## License
 
