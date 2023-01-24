@@ -1,7 +1,14 @@
-/* eslint-disable */
-const pkg = require('../package.json');
+import { readFileSync } from 'node:fs';
+import { fileURLToPath, URL } from 'node:url';
 
-module.exports = `/**
+const pkg = JSON.parse(
+  readFileSync(
+    fileURLToPath(new URL('../package.json', import.meta.url)),
+    'utf-8'
+  )
+);
+
+export default `/**
  * ${pkg.name}
  *
  * @description ${pkg.description}

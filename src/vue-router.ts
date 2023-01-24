@@ -43,7 +43,7 @@ VueRouter.prototype.isReady = function (): Promise<void> {
 
 /** Create Vue Router */
 export function createRouter(options?: RouterOptions): VueRouter {
-  Vue2.use(VueRouter);
+  Vue2?.use(VueRouter);
   return new VueRouter(options);
 }
 

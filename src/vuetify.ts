@@ -6,7 +6,7 @@ import { OUT_OF_SCOPE, warn } from './utils';
 
 /** Create Vuetify Instance */
 export function createVuetify(options?: UserVuetifyPreset): Vuetify {
-  Vue2.use(Vuetify);
+  Vue2?.use(Vuetify);
   return new Vuetify(options);
 }
 

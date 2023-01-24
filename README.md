@@ -122,7 +122,7 @@ This component is rewritten to composition api of Mechazawa's [vue2-teleport](ht
 
 ## License
 
-[MIT](LICENSE)
+[Apache License Version 2.0](LICENSE)
 
 Original version By [ambit_tsai](https://github.com/ambit-tsai).
 

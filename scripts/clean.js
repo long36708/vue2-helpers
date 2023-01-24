@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-const fs = require('fs');
+/* eslint-disable tsdoc/syntax */
+import { unlink } from 'node:fs';
 
 removeFile('index');
 removeFile('vue-router');
@@ -10,15 +10,15 @@ removeFile('teleport');
 
 /**
  * Remove File
- * @param file - File
- * @param exts - Extensions
+ * @param {string} file - File
+ * @param {string[]} exts - Extensions
  */
 function removeFile(
   file,
   exts = ['es.js', 'umd.js', 'd.ts', 'es.js.map', 'umd.js.map', 'd.ts.map']
 ) {
   exts.forEach(ext => {
-    fs.unlink(`${file}.${ext}`, err => {
+    unlink(`${file}.${ext}`, err => {
       if (err) throw err;
       console.log(`Remove: ${file}.${ext}`);
     });
