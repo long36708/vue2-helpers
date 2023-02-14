@@ -1,17 +1,17 @@
 /* eslint-disable tsdoc/syntax */
-import { rollup } from 'rollup';
-import { terser } from 'rollup-plugin-terser';
-import banner from './banner.js';
 import { parse } from 'path';
+import { rollup } from 'rollup';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import vuetify from 'rollup-plugin-vuetify';
+
+import banner from './banner.js';
 
 console.log('Build:');
 compile('src/index.ts');
+compile('src/teleport.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
 compile('src/vuex.ts');
-compile('src/teleport.ts');
 console.log('done.');
 
 /**
@@ -25,7 +25,7 @@ async function compile(file) {
   const bundle = await rollup({
     input: file,
     external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify/lib'],
-    plugins: [typescript(), vuetify()],
+    plugins: [typescript()],
   });
   const globals = {
     vue: 'Vue',

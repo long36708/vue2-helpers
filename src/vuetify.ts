@@ -14,8 +14,7 @@ export function createVuetify(options?: UserVuetifyPreset): Vuetify {
 export function useVuetify(): Framework {
   /** Vue instance */
   const instance = getCurrentInstance();
-  if (instance) {
-    // @ts-ignore
+  if (instance && instance.proxy.$vuetify) {
     return instance.proxy.$vuetify;
   } else {
     warn(`[vue2-helpers/vuetify] ${OUT_OF_SCOPE}`);
