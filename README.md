@@ -71,10 +71,12 @@ Please use them from now on.
 
 ### vue2-helpers/vuetify
 
-| Features                                             | Description             |
-| ---------------------------------------------------- | ----------------------- |
-| `createVuetify`(options: UserVuetifyPreset): Vuetify | Create Vuetify Instance |
-| `useVuetify`(): Framework                            | Get Vuetify Instance.   |
+| Features                                             | Description                                                   |
+| ---------------------------------------------------- | ------------------------------------------------------------- |
+| `createVuetify`(options: UserVuetifyPreset): Vuetify | Create Vuetify Instance                                       |
+| `useVuetify`(): Framework                            | Get Vuetify Instance.                                         |
+| `useTheme`(): Theme                                  | Get and set Theme variables.                                  |
+| `useDisplay`(): Breakpoint                           | Get breakpoint, It's an API similar to Vuetify3's useDisplay. |
 
 ### vue-helpers/teleport
 
@@ -89,7 +91,7 @@ This is an alternative to [vue3's teleport](https://v3.vuejs.org/guide/teleport.
 This component works standalone from a CDN.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@2.1.1/teleport.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/teleport.umd.js"></script>
 ```
 
 #### Teleport Example

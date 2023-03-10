@@ -81,9 +81,7 @@ export function useRoute(): RouteLocationNormalizedLoaded {
     scope.run(() => {
       const { $router } = inst.proxy;
       currentRoute = reactive(assign({}, $router.currentRoute)) as any;
-      $router.afterEach(to => {
-        assign(currentRoute, to);
-      });
+      $router.afterEach(to => assign(currentRoute, to));
     });
   }
   return currentRoute;
@@ -136,8 +134,6 @@ export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
  * @returns
  */
 function assign(target: Record<string, any>, source: Record<string, any>) {
-  for (const key of Object.keys(source)) {
-    target[key] = source[key];
-  }
+  Object.keys(source).forEach(key => (target[key] = source[key]));
   return target;
 }
