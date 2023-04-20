@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
