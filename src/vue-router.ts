@@ -25,7 +25,7 @@ export interface RouterOptions extends RawRouterOptions {
 }
 
 export interface Router extends VueRouter {
-  isReady(): Promise<void>;
+  isReady: () => void;
 
   /** @deprecated use `currentRoute.matched` instead */
   getMatchedComponents: VueRouter['getMatchedComponents'];
@@ -34,10 +34,10 @@ export interface Router extends VueRouter {
   onReady: VueRouter['onReady'];
 }
 
-// @ts-ignore
-VueRouter.prototype.isReady = function (): Promise<void> {
-  return new Promise((resolve, reject) => {
-    this.onReady(resolve, reject);
+// @ts-expect-error add isReady function to VueRouter
+VueRouter.prototype.isReady = async function (): Promise<void> {
+  await new Promise((resolve, reject) => {
+    this.onReady(resolve as () => void, reject);
   });
 };
 
@@ -55,7 +55,7 @@ export function createRouter(options?: RouterOptions): VueRouter {
 export function useRouter(): Router {
   warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('useRouter')}`);
   const inst = getCurrentInstance();
-  if (inst) {
+  if (inst != null) {
     return inst.proxy.$router as Router;
   }
   warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
@@ -72,7 +72,7 @@ let currentRoute: RouteLocationNormalizedLoaded;
 export function useRoute(): RouteLocationNormalizedLoaded {
   warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('useRoute')}`);
   const inst = getCurrentInstance();
-  if (!inst) {
+  if (inst == null) {
     warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return undefined as any;
   }
@@ -94,10 +94,10 @@ export function useRoute(): RouteLocationNormalizedLoaded {
  * @param leaveGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
+export function onBeforeRouteLeave(leaveGuard: NavigationGuard): void {
   warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('onBeforeRouteLeave')}`);
   const inst = getCurrentInstance();
-  if (!inst) {
+  if (inst == null) {
     warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return;
   }
@@ -114,10 +114,10 @@ export function onBeforeRouteLeave(leaveGuard: NavigationGuard) {
  * @param updateGuard - Navigation Guard
  * @returns
  */
-export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
+export function onBeforeRouteUpdate(updateGuard: NavigationGuard): void {
   warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('onBeforeRouteUpdate')}`);
   const inst = getCurrentInstance();
-  if (!inst) {
+  if (inst == null) {
     warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
     return;
   }
@@ -133,7 +133,10 @@ export function onBeforeRouteUpdate(updateGuard: NavigationGuard) {
  * @param source -
  * @returns
  */
-function assign(target: Record<string, any>, source: Record<string, any>) {
+function assign(
+  target: Record<string, any>,
+  source: Record<string, any>
+): Record<string, any> {
   Object.keys(source).forEach(key => (target[key] = source[key]));
   return target;
 }

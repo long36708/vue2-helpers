@@ -1,6 +1,7 @@
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 import { computed, getCurrentInstance, type ComputedRef } from 'vue-demi';
 import { OUT_OF_SCOPE } from './utils';
+import type Vue from 'vue';
 type ActionReturnType<T extends (...args: any) => any> = Promise<
   T extends (...args: any) => Promise<infer U> ? U : ReturnType<T>
 >;
@@ -55,13 +56,13 @@ export function createVuexHelpers<
   RootGetters,
   RootMutations,
   RootActions
->() {
-  return {
-    useState: useState as Helper<'state', RootState>,
-    useGetters: useGetters as Helper<'getters', RootGetters>,
-    useMutations: useMutations as Helper<'mutations', RootMutations>,
-    useActions: useActions as Helper<'actions', RootActions>,
-  };
+>(): {
+  useState: Helper<'state', RootState>;
+  useGetters: Helper<'getters', RootGetters>;
+  useMutations: Helper<'mutations', RootMutations>;
+  useActions: Helper<'actions', RootActions>;
+} {
+  return { useState, useGetters, useMutations, useActions };
 }
 
 /**
@@ -69,9 +70,9 @@ export function createVuexHelpers<
  *
  * @param args - state name
  */
-function useState(...args: [any]) {
+function useState(...args: [any]): Record<string, any> {
   const states = mapState(...args);
-  const result: any = {};
+  const result: Record<string, any> = {};
   Object.keys(states).forEach(key => {
     result[key] = computed(states[key]);
   });
@@ -83,9 +84,9 @@ function useState(...args: [any]) {
  *
  * @param args - getter name
  */
-function useGetters(...args: [any]) {
+function useGetters(...args: [any]): Record<string, any> {
   const getters = mapGetters(...args);
-  const result: any = {};
+  const result: Record<string, any> = {};
   Object.keys(getters).forEach(key => {
     result[key] = computed(getters[key]);
   });
@@ -95,9 +96,9 @@ function useGetters(...args: [any]) {
 /**
  * Get Vue Instance
  */
-function getVueInstance() {
+function getVueInstance(): Vue {
   const vm = getCurrentInstance();
-  if (vm) {
+  if (vm != null) {
     return vm.proxy;
   }
   throw new Error(OUT_OF_SCOPE);
@@ -109,9 +110,9 @@ function getVueInstance() {
  * @param args - mutation name
  * @returns
  */
-function useMutations(...args: [any]) {
+function useMutations(...args: [any]): Record<string, any> {
   const vm = getVueInstance();
-  const result: any = {};
+  const result: Record<string, any> = {};
   const mutations = mapMutations(...args);
   Object.keys(mutations).forEach(key => {
     result[key] = mutations[key].bind(vm);
@@ -124,9 +125,9 @@ function useMutations(...args: [any]) {
  * @param args - Vuex Action
  * @returns
  */
-function useActions(...args: [any]) {
+function useActions(...args: [any]): Record<string, any> {
   const vm = getVueInstance();
-  const result: any = {};
+  const result: Record<string, any> = {};
   const actions = mapActions(...args);
   Object.keys(actions).forEach(key => {
     result[key] = actions[key].bind(vm);

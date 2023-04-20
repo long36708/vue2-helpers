@@ -17,11 +17,10 @@ export function createVuetify(options?: UserVuetifyPreset): Vuetify {
 export function useVuetify(): Framework {
   /** Vue instance */
   const instance = getCurrentInstance();
-  if (instance && instance.proxy.$vuetify) {
+  if (instance?.proxy.$vuetify) {
     return instance.proxy.$vuetify;
-  } else {
-    warn(`[vue2-helpers/vuetify] ${OUT_OF_SCOPE}`);
   }
+  warn(`[vue2-helpers/vuetify] ${OUT_OF_SCOPE}`);
   return undefined as any;
 }
 

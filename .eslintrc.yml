@@ -1,54 +1,15 @@
-root: true
 env:
   browser: true
-  es2016: true # Vue recommended
-  node: true
+  es2021: true
 extends:
-  - eslint:recommended
-  - google
-  - plugin:@typescript-eslint/eslint-recommended
-  - plugin:import/recommended
-  - plugin:import/typescript
+  - standard-with-typescript
   - eslint-config-prettier
-plugins:
-  - '@typescript-eslint'
-  - jsdoc
-  - tsdoc
+overrides: []
 parser: '@typescript-eslint/parser'
 parserOptions:
+  project: ./tsconfig.json
   ecmaVersion: latest
   sourceType: module
-  createDefaultProgram: true
-  project:
-    - ./tsconfig.json
 rules:
-  new-cap: off
-  no-invalid-this: off
-  no-unused-vars: warn
-  require-jsdoc: warn
-  valid-jsdoc: off
-  jsdoc/require-param-type: off
-  jsdoc/require-param:
-    - off
-    - enableRootFixer: false
-  jsdoc/require-returns-description: off
-  jsdoc/require-returns-type: off
-  jsdoc/require-returns: off
-  tsdoc/syntax: warn
-settings:
-  import/parsers:
-    '@typescript-eslint/parser':
-      - .ts
-      - .tsx
-  import/resolver:
-    typescript: true
-    alias:
-      map:
-        - ['@', './src']
-      extensions:
-        - .js
-        - .ts
-        - .jsx
-        - .tsx
-  vite:
-    configPath: ./vite.config.ts
+  '@typescript-eslint/ban-types': off
+  '@typescript-eslint/strict-boolean-expressions': off

@@ -1,6 +1,5 @@
 import {
   defineComponent,
-  h,
   onBeforeUnmount,
   onMounted,
   ref,
@@ -9,6 +8,7 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue-demi';
+import h from './h-demi';
 
 /**
  * Teleport Component.
@@ -50,12 +50,16 @@ export const Teleport = defineComponent({
 
     watch(
       () => props.to,
-      () => maybeMove()
+      () => {
+        maybeMove();
+      }
     );
 
     watch(
       () => props.where,
-      () => maybeMove()
+      () => {
+        maybeMove();
+      }
     );
 
     watch(
@@ -72,7 +76,7 @@ export const Teleport = defineComponent({
     );
 
     onMounted(() => {
-      if (teleport.value) {
+      if (teleport.value != null) {
         // Store a reference to the nodes
         nodes.value = Array.from(teleport.value.childNodes);
       }
@@ -88,16 +92,16 @@ export const Teleport = defineComponent({
       teardownObserver();
     });
 
-    const maybeMove = () => {
+    const maybeMove = (): void => {
       if (!props.disabled) {
         move();
       }
     };
 
-    const move = () => {
+    const move = (): void => {
       waiting.value = false;
       parent.value = document.querySelector(props.to);
-      if (!parent.value) {
+      if (parent.value == null) {
         disable();
         waiting.value = true;
         return;
@@ -108,7 +112,7 @@ export const Teleport = defineComponent({
         parent.value.appendChild(getFragment());
       }
     };
-    const disable = () => {
+    const disable = (): void => {
       teleport.value?.appendChild(getFragment());
       parent.value = null;
     };
@@ -121,16 +125,15 @@ export const Teleport = defineComponent({
       return fragment;
     };
 
-    const onMutations = (mutations: MutationRecord[]) => {
+    const onMutations = (mutations: MutationRecord[]): void => {
       // Makes sure the move operation is only done once
       let shouldMove = false;
-      for (let i = 0; i < mutations.length; i++) {
-        const mutation = mutations[i];
+      mutations.forEach(mutation => {
         const filteredAddedNodes = Array.from(mutation.addedNodes).filter(
           node => !nodes.value.includes(node)
         );
         if (
-          parent.value &&
+          parent.value != null &&
           Array.from(mutation.removedNodes).includes(parent.value)
         ) {
           disable();
@@ -138,17 +141,17 @@ export const Teleport = defineComponent({
         } else if (waiting.value && filteredAddedNodes.length > 0) {
           shouldMove = true;
         }
-      }
+      });
       if (shouldMove) {
         move();
       }
     };
 
-    const bootObserver = () => {
-      if (!observer.value) {
-        observer.value = new MutationObserver((mutations: MutationRecord[]) =>
-          onMutations(mutations)
-        );
+    const bootObserver = (): void => {
+      if (observer.value == null) {
+        observer.value = new MutationObserver((mutations: MutationRecord[]) => {
+          onMutations(mutations);
+        });
         observer.value.observe(document.body, {
           childList: true,
           subtree: true,
@@ -157,14 +160,14 @@ export const Teleport = defineComponent({
         });
       }
 
-      if (!childObserver.value) {
+      if (childObserver.value == null) {
         // watch childNodes change
         childObserver.value = new MutationObserver(
           (mutations: MutationRecord[]) => {
             const childChangeRecord = mutations.find(
               i => i.target === teleport.value
             );
-            if (childChangeRecord && teleport.value) {
+            if (childChangeRecord != null && teleport.value != null) {
               nodes.value = Array.from(teleport.value.childNodes);
               maybeMove();
             }
@@ -173,12 +176,12 @@ export const Teleport = defineComponent({
       }
     };
 
-    const teardownObserver = () => {
-      if (observer.value) {
+    const teardownObserver = (): void => {
+      if (observer.value != null) {
         observer.value.disconnect();
         observer.value = null;
       }
-      if (childObserver.value) {
+      if (childObserver.value != null) {
         childObserver.value.disconnect();
         childObserver.value = null;
       }
@@ -212,12 +215,11 @@ export const Teleport = defineComponent({
   },
 });
 
-const install = (app: any) => app.component('Teleport', Teleport);
+const install = (app: any): void => app.component('Teleport', Teleport);
 
 export { Teleport as default, install };
 
-// @ts-ignore
-if (typeof window !== 'undefined' && window.Vue) {
-  // @ts-ignore
+if (window.Vue) {
+  // @ts-expect-error Register to window's Vue object
   window.Vue.use(Teleport);
 }

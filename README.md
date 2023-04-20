@@ -133,6 +133,10 @@ export default defineComponent({
 
 This component is rewritten to composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
 
+## h-demi
+
+This program is for library components. This is to resolve the incompatibility of the `h` function when creating a library that supports both Vue2 and Vue3. See the address below for details.
+
 ## License
 
 [Apache License Version 2.0](LICENSE)
