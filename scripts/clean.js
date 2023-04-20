@@ -1,4 +1,3 @@
-/* eslint-disable tsdoc/syntax */
 import { unlink } from 'node:fs';
 
 removeFile('index');
@@ -7,6 +6,7 @@ removeFile('vuetify');
 removeFile('vuex');
 removeFile('utils', ['d.ts', 'd.ts.map']);
 removeFile('teleport');
+removeFile('h-demi');
 
 /**
  * Remove File

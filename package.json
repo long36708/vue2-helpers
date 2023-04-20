@@ -54,6 +54,11 @@
       "import": "./teleport.es.js",
       "require": "./teleport.umd.js",
       "types": "./teleport.d.ts"
+    },
+    "./h-demi": {
+      "import": "./h-demi.es.js",
+      "require": "./h-demi.umd.js",
+      "types": "./h-demi.d.ts"
     }
   },
   "files": [
@@ -88,7 +93,7 @@
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.7.1",
-    "vue": "^2.0.0 || <3.0.0",
+    "vue": "^2.0.0 || >=3.0.0",
     "vue-router": "^3.6.5",
     "vuetify": "^2.0.0 || <3.0.0",
     "vuex": "^3.6.2"

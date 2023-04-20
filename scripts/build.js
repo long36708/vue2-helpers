@@ -1,4 +1,3 @@
-/* eslint-disable tsdoc/syntax */
 import { parse } from 'path';
 import { rollup } from 'rollup';
 import terser from '@rollup/plugin-terser';
@@ -12,6 +11,7 @@ compile('src/teleport.ts');
 compile('src/vue-router.ts');
 compile('src/vuetify.ts');
 compile('src/vuex.ts');
+compile('src/h-demi.ts');
 console.log('done.');
 
 /**
