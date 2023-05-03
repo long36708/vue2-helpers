@@ -1,13 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": [
+    "@tsconfig/node-lts/tsconfig.json",
+    "@vue/tsconfig/tsconfig.json"
+  ],
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
     "declarationDir": ".",
     "newLine": "lf",
     "noImplicitAny": false,
-    "lib": ["ES2021", "DOM"],
+    "lib": ["ESNext", "DOM"],
     "paths": { "@/*": ["./src/*"] },
     "types": ["vue", "vuetify"]
   },

@@ -12,6 +12,7 @@ export function createStore<S>(options: StoreOptions<S>): Store<S> {
 export function useStore<S = any>(): Store<S> {
   const inst = getCurrentInstance();
   if (inst != null) {
+    // @ts-expect-error Vuex already registerd
     return inst.proxy.$store;
   } else {
     warn(`[vue2-helpers/vuex] ${OUT_OF_SCOPE}`);
