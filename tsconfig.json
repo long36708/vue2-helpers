@@ -1,20 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
-  "extends": [
-    "@tsconfig/node-lts/tsconfig.json",
-    "@vue/tsconfig/tsconfig.json"
-  ],
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["scripts/*"],
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": ".",
-    "newLine": "lf",
-    "noImplicitAny": false,
-    "lib": ["ESNext", "DOM"],
-    "paths": { "@/*": ["./src/*"] },
-    "types": ["vue", "vuetify"]
+    "declarationDir": "dist",
+    "incremental": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "scripts"],
   "vueCompilerOptions": { "target": 2.7 }
 }

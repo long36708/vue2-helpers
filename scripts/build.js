@@ -36,7 +36,7 @@ async function compile(file) {
   };
   await bundle.write({
     banner,
-    file: `${name}.es.js`,
+    file: `dist/${name}.es.js`,
     format: 'esm',
     sourcemap: true,
     globals: globals,
@@ -44,7 +44,7 @@ async function compile(file) {
   await bundle.write({
     banner,
     name: name,
-    file: `${name}.umd.js`,
+    file: `dist/${name}.umd.js`,
     format: 'umd',
     sourcemap: true,
     exports: 'named',

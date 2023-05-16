@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
@@ -26,48 +26,48 @@
     }
   ],
   "license": "Apache-2.0",
-  "main": "index.umd.js",
-  "module": "index.es.js",
-  "types": "index.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.es.js",
-      "require": "./index.umd.js",
-      "types": "./index.d.ts"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/src/index.d.ts"
     },
     "./vuex": {
-      "import": "./vuex.es.js",
-      "require": "./vuex.umd.js",
-      "types": "./vuex.d.ts"
+      "import": "./dist/vuex.es.js",
+      "require": "./dist/vuex.umd.js",
+      "types": "./dist/src/vuex.d.ts"
     },
     "./vue-router": {
-      "import": "./vue-router.es.js",
-      "require": "./vue-router.umd.js",
-      "types": "./vue-router.d.ts"
+      "import": "./dist/vue-router.es.js",
+      "require": "./dist/vue-router.umd.js",
+      "types": "./dist/src/vue-router.d.ts"
     },
     "./vuetify": {
-      "import": "./vuetify.es.js",
-      "require": "./vuetify.umd.js",
-      "types": "./vuetify.d.ts"
+      "import": "./dist/vuetify.es.js",
+      "require": "./dist/vuetify.umd.js",
+      "types": "./dist/src/vuetify.d.ts"
     },
     "./teleport": {
-      "import": "./teleport.es.js",
-      "require": "./teleport.umd.js",
-      "types": "./teleport.d.ts"
+      "import": "./dist/teleport.es.js",
+      "require": "./dist/teleport.umd.js",
+      "types": "./dist/src/teleport.d.ts"
     },
     "./h-demi": {
-      "import": "./h-demi.es.js",
-      "require": "./h-demi.umd.js",
-      "types": "./h-demi.d.ts"
+      "import": "./dist/h-demi.es.js",
+      "require": "./dist/h-demi.umd.js",
+      "types": "./dist/src/h-demi.d.ts"
     }
   },
   "files": [
-    "./*.d.ts",
-    "./*.d.ts.map",
-    "./*.es.js",
-    "./*.es.js.map",
-    "./*.umd.js",
-    "./*.umd.js.map"
+    "./dist/*.es.js.map",
+    "./dist/*.es.js",
+    "./dist/*.umd.js.map",
+    "./dist/*.umd.js",
+    "./dist/src/*.d.ts.map",
+    "./dist/src/*.d.ts"
   ],
   "sideEffects": false,
   "engines": {
@@ -76,8 +76,11 @@
   "packageManager": "yarn@3.5.1",
   "scripts": {
     "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
-    "build": "node scripts/build.js && tsc --declaration --emitDeclarationOnly",
-    "build:clean": "node scripts/clean.js",
+    "build": "run-p type-check build-only build-declaration",
+    "build:clean": "rimraf dist/",
+    "build-declaration": "tsc --declaration --emitDeclarationOnly",
+    "build-only": "node scripts/build.js",
+    "type-check": "tsc --noEmit --composite false",
     "prepare": "husky install",
     "postinstall": "patch-package"
   },
@@ -93,11 +96,11 @@
     "vue-demi": "latest"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.7.1",
-    "vue": "^2.0.0 || >=3.0.0",
-    "vue-router": "^3.6.5",
+    "@vue/composition-api": "latest",
+    "vue": "^2.0.0 || <3.0.0",
+    "vue-router": "^3.6.5 || <4.0.0",
     "vuetify": "^2.0.0 || <3.0.0",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2 || <4.0.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
@@ -112,13 +115,12 @@
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.1",
-    "@rollup/plugin-typescript": "^11.1.0",
-    "@tsconfig/node-lts": "^18.12.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
-    "@vue/tsconfig": "^0.3.2",
+    "@rollup/plugin-typescript": "^11.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "@vue/tsconfig": "^0.4.0",
     "add": "^2.0.6",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "latest",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -129,17 +131,18 @@
     "eslint-plugin-vue": "latest",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "npm": "^9.6.5",
+    "npm-run-all": "^4.1.5",
     "patch-package": "^7.0.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.0",
-    "rollup": "^3.21.3",
+    "rmraf": "^1.0.3",
+    "rollup": "^3.21.7",
     "typescript": "^5.0.4",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5",
     "vue-template-compiler": "^2.7.14",
-    "vuetify": "^2.6.14",
+    "vuetify": "^2.6.15",
     "vuex": "^3.6.2"
   },
   "husky": {

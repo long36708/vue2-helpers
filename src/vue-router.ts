@@ -83,7 +83,7 @@ export function useRoute(): RouteLocationNormalizedLoaded {
       // @ts-expect-error Vue-router registerd
       const { $router } = inst.proxy;
       currentRoute = reactive(assign({}, $router.currentRoute)) as any;
-      $router.afterEach(to => assign(currentRoute, to));
+      $router.afterEach((to: any) => assign(currentRoute, to));
     });
   }
   return currentRoute;
