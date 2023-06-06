@@ -8,7 +8,6 @@
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "dist",
-    "incremental": false,
     "paths": {
       "@/*": ["./src/*"]
     }

@@ -4,12 +4,9 @@
 !/.yarn/releases
 # !/.yarn/sdks
 # !/.yarn/cache
+.rollup.cache/
+dist/
 node_modules
+src/*.d.ts
 .DS_Store
-dist
-./*.es.js
-./*.es.js.map
-./*.umd.js
-./*.umd.js.map
-./*.d.ts
-./*.d.ts.map
+tsconfig.tsbuildinfo

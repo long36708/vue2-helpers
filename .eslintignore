@@ -1,4 +1,7 @@
 .husky/
+.rollup.cache/
 .vscode/
 .yarn/
+dist/
 scripts/
+src/*.d.ts
