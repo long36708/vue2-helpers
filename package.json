@@ -1,6 +1,7 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "@logue/vue2-helpers",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
@@ -27,45 +28,58 @@
   ],
   "license": "Apache-2.0",
   "main": "dist/index.umd.js",
-  "browser": "dist/index.iife.js",
+  "jsdelivr": "dist/index.iife.js",
+  "unpkg": "dist/index.iife.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "browser": "./dist/index.iife.js",
-      "import": "./dist/index.es.js",
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.umd.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.es.js",
+      "browser": "./dist/index.es.js",
+      "jsdelivr": "./dist/index.iife.js",
+      "unpkg": "./dist/index.iife.js"
     },
     "./vuex": {
-      "browser": "./dist/vuex.iife.js",
-      "import": "./dist/vuex.es.js",
+      "types": "./dist/vuex.d.ts",
       "require": "./dist/vuex.umd.js",
-      "types": "./dist/vuex.d.ts"
+      "import": "./dist/vuex.es.js",
+      "browser": "./dist/vuex.es.js",
+      "jsdelivr": "./dist/vuex.iife.js",
+      "unpkg": "./dist/vuex.iife.js"
     },
     "./vue-router": {
-      "browser": "./dist/vue-router.iife.js",
-      "import": "./dist/vue-router.es.js",
+      "types": "./dist/vue-router.d.ts",
       "require": "./dist/vue-router.umd.js",
-      "types": "./dist/vue-router.d.ts"
+      "import": "./dist/vue-router.es.js",
+      "browser": "./dist/vue-router.es.js",
+      "jsdelivr": "./dist/vue-router.iife.js",
+      "unpkg": "./dist/vue-router.iife.js"
     },
     "./vuetify": {
-      "browser": "./dist/vuetify.iife.js",
-      "import": "./dist/vuetify.es.js",
+      "types": "./dist/vuetify.d.ts",
       "require": "./dist/vuetify.umd.js",
-      "types": "./dist/vuetify.d.ts"
+      "import": "./dist/vuetify.es.js",
+      "browser": "./dist/vuetify.es.js",
+      "jsdelivr": "./dist/vuetify.iife.js",
+      "unpkg": "./dist/vuetify.iife.js"
     },
     "./teleport": {
-      "browser": "./dist/teleport.iife.js",
-      "import": "./dist/teleport.es.js",
+      "types": "./dist/teleport.d.ts",
       "require": "./dist/teleport.umd.js",
-      "types": "./dist/teleport.d.ts"
+      "import": "./dist/teleport.es.js",
+      "browser": "./dist/teleport.es.js",
+      "jsdelivr": "./dist/teleport.iife.js",
+      "unpkg": "./dist/teleport.iife.js"
     },
     "./h-demi": {
-      "browser": "./dist/h-demi.iife.js",
-      "import": "./dist/h-demi.es.js",
+      "types": "./dist/h-demi.d.ts",
       "require": "./dist/h-demi.umd.js",
-      "types": "./dist/h-demi.d.ts"
+      "import": "./dist/h-demi.es.js",
+      "browser": "./dist/h-demi.es.js",
+      "jsdelivr": "./dist/h-demi.iife.js",
+      "unpkg": "./dist/h-demi.iife.js"
     }
   },
   "files": [
