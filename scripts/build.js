@@ -23,32 +23,44 @@ async function compile(file) {
   console.log(`compile: ${file}`);
   const name = parse(file).name;
   const bundle = await rollup({
-    input: file,
     external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify/lib'],
+    input: file,
     plugins: [typescript()],
   });
   const globals = {
+    'h-demi': 'hDemi',
+    'vue-demi': 'VueDemi',
+    'vue-router': 'VueRouter',
+    'vuetify/lib': 'Vuetify',
     vue: 'Vue',
     vuex: 'Vuex',
-    'vue-router': 'VueRouter',
-    'vue-demi': 'VueDemi',
-    'vuetify/lib': 'vuetify',
   };
   await bundle.write({
     banner,
     file: `dist/${name}.es.js`,
     format: 'esm',
-    sourcemap: true,
     globals: globals,
+    sourcemap: true,
   });
   await bundle.write({
     banner,
-    name: name,
+    exports: 'named',
     file: `dist/${name}.umd.js`,
     format: 'umd',
-    sourcemap: true,
-    exports: 'named',
     globals: globals,
+    name: name,
     plugins: [terser()],
+    sourcemap: true,
+  });
+  await bundle.write({
+    banner,
+    exports: 'named',
+    extend: true,
+    file: `dist/${name}.iife.js`,
+    format: 'iife',
+    globals: globals,
+    name: name,
+    plugins: [terser()],
+    sourcemap: true,
   });
 }

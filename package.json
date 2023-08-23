@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
@@ -27,35 +27,42 @@
   ],
   "license": "Apache-2.0",
   "main": "dist/index.umd.js",
+  "browser": "dist/index.iife.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "browser": "./dist/index.iife.js",
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
       "types": "./dist/index.d.ts"
     },
     "./vuex": {
+      "browser": "./dist/vuex.iife.js",
       "import": "./dist/vuex.es.js",
       "require": "./dist/vuex.umd.js",
       "types": "./dist/vuex.d.ts"
     },
     "./vue-router": {
+      "browser": "./dist/vue-router.iife.js",
       "import": "./dist/vue-router.es.js",
       "require": "./dist/vue-router.umd.js",
       "types": "./dist/vue-router.d.ts"
     },
     "./vuetify": {
+      "browser": "./dist/vuetify.iife.js",
       "import": "./dist/vuetify.es.js",
       "require": "./dist/vuetify.umd.js",
       "types": "./dist/vuetify.d.ts"
     },
     "./teleport": {
+      "browser": "./dist/teleport.iife.js",
       "import": "./dist/teleport.es.js",
       "require": "./dist/teleport.umd.js",
       "types": "./dist/teleport.d.ts"
     },
     "./h-demi": {
+      "browser": "./dist/h-demi.iife.js",
       "import": "./dist/h-demi.es.js",
       "require": "./dist/h-demi.umd.js",
       "types": "./dist/h-demi.d.ts"
@@ -73,9 +80,9 @@
   "engines": {
     "yarn": ">=1.22.19"
   },
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@3.6.2",
   "scripts": {
-    "lint": "eslint . --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
+    "lint": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
     "build": "run-p type-check build-only build-declaration",
     "build:clean": "rimraf dist/",
     "build-declaration": "tsc --declaration --emitDeclarationOnly",
@@ -93,15 +100,15 @@
     "url": "https://github.com/logue/vue2-helpers/issues"
   },
   "dependencies": {
-    "patch-package": "^7.0.0",
+    "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     "vue-demi": "latest"
   },
   "peerDependencies": {
     "@vue/composition-api": "*",
-    "vue": "^2.0.0 || <3.0.0",
+    "vue": "^2.7.8 || <3.0.0",
     "vue-router": "^3.6.5 || <4.0.0",
-    "vuetify": "^2.0.0 || <3.0.0",
+    "vuetify": "^2.7.1 || <3.0.0",
     "vuex": "^3.6.2 || <4.0.0"
   },
   "peerDependenciesMeta": {
@@ -117,32 +124,33 @@
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "@vue/tsconfig": "^0.4.0",
     "add": "^2.0.6",
-    "eslint": "^8.42.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-standard-with-typescript": "latest",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard-with-typescript": "^38.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^16.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "latest",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^14.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.2",
     "rimraf": "^5.0.1",
     "rmraf": "^1.0.3",
-    "rollup": "^3.23.1",
-    "typescript": "^5.1.3",
+    "rollup": "^3.28.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.1.6",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5",
     "vue-template-compiler": "^2.7.14",
-    "vuetify": "^2.6.15",
+    "vuetify": "^2.7.1",
     "vuex": "^3.6.2"
   },
   "husky": {

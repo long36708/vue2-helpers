@@ -27,7 +27,7 @@ const adaptOnsV3 = (
  */
 const h = (
   type: string | Record<any, any>,
-  options: VNodeData,
+  options: VNodeData = {},
   chidren?: any
 ): VNode => {
   if (isVue2) {
@@ -42,7 +42,7 @@ const h = (
   );
 };
 
-export const slot = (defaultSlots: any): any =>
+const slot = (defaultSlots: any): any =>
   typeof defaultSlots === 'function' ? defaultSlots() : defaultSlots;
 
-export default h;
+export { h, slot };

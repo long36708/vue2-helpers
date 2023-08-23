@@ -36,11 +36,9 @@ interface Helper<RMK extends ResultMapKey, RootType> {
     keys: K[]
   ): HelperReturnType<RMK, K, N extends keyof RootType ? RootType[N] : {}>;
 
-  <K extends string>(map: Record<K, string | Function>): HelperReturnType<
-    RMK,
-    K,
-    RootType
-  >;
+  <K extends string>(
+    map: Record<K, string | Function>
+  ): HelperReturnType<RMK, K, RootType>;
 
   <K extends string, N extends string>(
     namespace: N,
@@ -55,7 +53,7 @@ export function createVuexHelpers<
   RootState,
   RootGetters,
   RootMutations,
-  RootActions
+  RootActions,
 >(): {
   useState: Helper<'state', RootState>;
   useGetters: Helper<'getters', RootGetters>;

@@ -8,7 +8,7 @@ import {
   type Ref,
   type SetupContext,
 } from 'vue-demi';
-import h from './h-demi';
+import { h } from './h-demi';
 
 /**
  * Teleport Component.
@@ -218,8 +218,3 @@ export const Teleport = defineComponent({
 const install = (app: any): void => app.component('Teleport', Teleport);
 
 export { Teleport as default, install };
-
-if (window.Vue) {
-  // @ts-expect-error Register to window's Vue object
-  window.Vue.use(Teleport);
-}
