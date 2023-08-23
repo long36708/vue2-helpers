@@ -1,6 +1,6 @@
 {
   "name": "@logue/vue2-helpers",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
@@ -69,12 +69,7 @@
     }
   },
   "files": [
-    "./dist/*.es.js.map",
-    "./dist/*.es.js",
-    "./dist/*.umd.js.map",
-    "./dist/*.umd.js",
-    "./dist/src/*.d.ts.map",
-    "./dist/src/*.d.ts"
+    "dist"
   ],
   "sideEffects": false,
   "engines": {

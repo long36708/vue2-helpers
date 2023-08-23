@@ -3,7 +3,7 @@ import { rollup } from 'rollup';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 
-import banner from './banner.js';
+import getBanner from './banner.js';
 
 console.log('Build:');
 compile('src/index.ts');
@@ -21,12 +21,17 @@ console.log('done.');
  */
 async function compile(file) {
   console.log(`compile: ${file}`);
+  /** @param {string} */
   const name = parse(file).name;
+  /** @param {import('rollup').RollupBuild} */
   const bundle = await rollup({
     external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify/lib'],
     input: file,
     plugins: [typescript()],
   });
+  /** @param {string} */
+  const banner = getBanner(name === 'h-demi');
+  /** @param {Record<string, string>} */
   const globals = {
     'h-demi': 'hDemi',
     'vue-demi': 'VueDemi',
@@ -35,6 +40,7 @@ async function compile(file) {
     vue: 'Vue',
     vuex: 'Vuex',
   };
+  /** @param {import('rollup').RollupOutput} */
   await bundle.write({
     banner,
     file: `dist/${name}.es.js`,
@@ -42,6 +48,7 @@ async function compile(file) {
     globals: globals,
     sourcemap: true,
   });
+  /** @param {import('rollup').RollupOutput} */
   await bundle.write({
     banner,
     exports: 'named',
@@ -52,6 +59,7 @@ async function compile(file) {
     plugins: [terser()],
     sourcemap: true,
   });
+  /** @param {import('rollup').RollupOutput} */
   await bundle.write({
     banner,
     exports: 'named',
