@@ -71,9 +71,7 @@ export function createVuexHelpers<
 function useState(...args: [any]): Record<string, any> {
   const states = mapState(...args);
   const result: Record<string, any> = {};
-  Object.keys(states).forEach(key => {
-    result[key] = computed(states[key]);
-  });
+  Object.keys(states).forEach(key => (result[key] = computed(states[key])));
   return result;
 }
 
@@ -85,9 +83,7 @@ function useState(...args: [any]): Record<string, any> {
 function useGetters(...args: [any]): Record<string, any> {
   const getters = mapGetters(...args);
   const result: Record<string, any> = {};
-  Object.keys(getters).forEach(key => {
-    result[key] = computed(getters[key]);
-  });
+  Object.keys(getters).forEach(key => (result[key] = computed(getters[key])));
   return result;
 }
 
@@ -112,9 +108,9 @@ function useMutations(...args: [any]): Record<string, any> {
   const vm = getVueInstance();
   const result: Record<string, any> = {};
   const mutations = mapMutations(...args);
-  Object.keys(mutations).forEach(key => {
-    result[key] = mutations[key].bind(vm);
-  });
+  Object.keys(mutations).forEach(
+    key => (result[key] = mutations[key].bind(vm))
+  );
   return result;
 }
 
@@ -127,8 +123,6 @@ function useActions(...args: [any]): Record<string, any> {
   const vm = getVueInstance();
   const result: Record<string, any> = {};
   const actions = mapActions(...args);
-  Object.keys(actions).forEach(key => {
-    result[key] = actions[key].bind(vm);
-  });
+  Object.keys(actions).forEach(key => (result[key] = actions[key].bind(vm)));
   return result;
 }

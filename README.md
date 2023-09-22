@@ -12,6 +12,8 @@ This fork supports [Vuetify2](https://vuetifyjs.com/).
 
 [@vue/composition-api](https://github.com/vuejs/composition-api) is required separately when using under Vue 2.7.
 
+Notice: Due to the implementation of patching `vuex` to support TypeScript5, it is necessary to include it in the package even if the project does not use `vuex`.
+
 ## ⬇️ Install
 
 ```sh
@@ -48,12 +50,28 @@ router.push('/login');
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `createVuexHelpers`&lt;RootState, RootGetters, RootMutations, RootActions&gt;(): {`useState`, `useGetters`, `useMutations`, `useActions`} | The helper methods in return value are used to replace `mapState`, `mapGetters`, `mapMutations`, `mapActions` |
 
+CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/index.iife.js"></script>
+```
+
 ### vue2-helpers/vuex
 
 | Features                                                               | Description              |
 | ---------------------------------------------------------------------- | ------------------------ |
 | `createStore`&lt;S&gt;(options: StoreOptions&lt;S&gt;): Store&lt;S&gt; |                          |
 | `useStore`&lt;S = any&gt;(): Store&lt;S&gt;                            | Get Vuex store instance. |
+
+CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vuex.iife.js"></script>
+```
 
 ### vue2-helpers/vue-router
 
@@ -69,6 +87,14 @@ Please use them from now on.
 | ~~`useRouter`(): Router~~                                     | Get Router instance |
 | router.`isReady`(): Promise\<void\>                           |                     |
 
+CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-router@3.6.5/dist/vue-router.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vue-router.iife.js"></script>
+```
+
 ### vue2-helpers/vuetify
 
 | Features                                             | Description                                                   |
@@ -77,6 +103,13 @@ Please use them from now on.
 | `useVuetify`(): Framework                            | Get Vuetify Instance.                                         |
 | `useTheme`(): Theme                                  | Get and set Theme variables.                                  |
 | `useDisplay`(): Breakpoint                           | Get breakpoint, It's an API similar to Vuetify3's useDisplay. |
+
+CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vuetify.iife.js"></script>
+```
 
 ### vue-helpers/teleport
 
@@ -92,10 +125,11 @@ This injected Vue component also contains Vue events.
 | where    | Insert innerHTML to target DOM. Accepts `after` or `before`. (Default is `after`) |
 | disabled | boolean                                                                           |
 
-This component works standalone from a CDN.
+CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/teleport.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/teleport.iife.js"></script>
 ```
 
 #### Teleport Example
@@ -137,7 +171,7 @@ export default defineComponent({
 
 This component is rewritten to composition api of Mechazawa's [vue2-teleport](https://github.com/Mechazawa/vue2-teleport).
 
-## vue-helpers/h-demi
+## vue-helpers/h-demi (experimental)
 
 This program is for library components developers.
 This is to resolve the incompatibility of the `h` function when creating a library that supports both Vue2 and Vue3.
@@ -145,6 +179,13 @@ It is unnecessary if you do not use the `h` function.
 
 See the address below for details.
 <https://github.com/vueuse/vue-demi/issues/65>
+
+CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/h-demi.iife.js"></script>
+```
 
 ## License
 

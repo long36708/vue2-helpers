@@ -7,6 +7,11 @@
 
 import { h as hDemi, isVue2, type VNode, type VNodeData } from 'vue-demi';
 
+/**
+ * `on` functions glue of  Vue2 and Vue3
+ *
+ * @param ons `on` functions
+ */
 const adaptOnsV3 = (
   ons: Record<string, Function | Function[]>
 ): Record<string, () => void> => {
@@ -42,6 +47,11 @@ const h = (
   );
 };
 
+/**
+ * slots
+ *
+ * @param defaultSlots -
+ */
 const slot = (defaultSlots: any): any =>
   typeof defaultSlots === 'function' ? defaultSlots() : defaultSlots;
 

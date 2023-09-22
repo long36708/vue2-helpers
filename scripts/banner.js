@@ -16,9 +16,9 @@ export default (isExperimental = false) => {
  * @description ${pkg.description}
  * @version ${pkg.version}
  * @license ${pkg.license}
- * @see {@link ${pkg.homepage}}`;
+ * @see {@link ${pkg.homepage}}\n`;
   if (isExperimental) {
-    ret += '\n * @experimental\n';
+    ret += ' * @experimental\n';
   }
   ret += ` *
  * Build: ${new Date().toISOString()}
