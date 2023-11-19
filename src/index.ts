@@ -12,13 +12,13 @@ interface ResultMap<T> {
   mutations: T extends (a: any) => any
     ? () => void
     : T extends (a: any, b: infer U) => any
-    ? (payload: U) => void
-    : never;
+      ? (payload: U) => void
+      : never;
   actions: T extends (a: any) => any
     ? () => ActionReturnType<T>
     : T extends (a: any, b: infer U) => any
-    ? (payload: U) => ActionReturnType<T>
-    : never;
+      ? (payload: U) => ActionReturnType<T>
+      : never;
 }
 
 type ResultMapKey = keyof ResultMap<any>;
