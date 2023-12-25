@@ -5,7 +5,13 @@
  * @experimental
  */
 
-import { h as hDemi, isVue2, type VNode, type VNodeData } from 'vue-demi';
+import {
+  h as hDemi,
+  isVue2,
+  type VNode,
+  type VNodeChildren,
+  type VNodeData,
+} from 'vue-demi';
 
 /**
  * `on` functions glue of  Vue2 and Vue3
@@ -33,17 +39,17 @@ const adaptOnsV3 = (
 const h = (
   type: string | Record<any, any>,
   options: VNodeData = {},
-  chidren?: any
+  children: VNodeChildren = undefined
 ): VNode => {
   if (isVue2) {
-    return hDemi(type, options, chidren);
+    return hDemi(type, options, children);
   }
   const ons = options.on ? adaptOnsV3(options.on) : {};
 
   return hDemi(
     type,
     { ...options.props, ...options.domProps, ...ons },
-    chidren
+    children
   );
 };
 

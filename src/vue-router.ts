@@ -56,7 +56,6 @@ export function useRouter(): Router {
   warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('useRouter')}`);
   const inst = getCurrentInstance();
   if (inst) {
-    // @ts-expect-error Vue-router already registerd
     return inst.proxy.$router as Router;
   }
   warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
@@ -80,10 +79,9 @@ export function useRoute(): RouteLocationNormalizedLoaded {
   if (!currentRoute) {
     const scope = effectScope(true);
     scope.run(() => {
-      // @ts-expect-error Vue-router registerd
       const { $router } = inst.proxy;
       currentRoute = reactive(assign({}, $router.currentRoute)) as any;
-      $router.afterEach((to: any) => assign(currentRoute, to));
+      $router.afterEach((to: Record<string, any>) => assign(currentRoute, to));
     });
   }
   return currentRoute;
