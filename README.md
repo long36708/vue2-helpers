@@ -1,12 +1,5 @@
 # Vue2 Helpers
 
-[![jsdelivr CDN](https://data.jsdelivr.com/v1/package/npm/@logue/vue2-helpers/badge)](https://www.jsdelivr.com/package/npm/@logue/vue2-helpers)
-[![NPM Downloads](https://img.shields.io/npm/dm/@logue/vue2-helpers.svg?style=flat)](https://www.npmjs.com/package/@logue/vue2-helpers)
-[![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@logue/vue2-helpers/file/README.md)
-[![npm version](https://img.shields.io/npm/v/@logue/vue2-helpers.svg)](https://www.npmjs.com/package/@logue/vue2-helpers)
-[![Open in Gitpod](https://shields.io/badge/Open%20in-Gitpod-green?logo=Gitpod)](https://gitpod.io/#https://github.com/logue/@logue/vue2-helpers)
-[![Twitter Follow](https://img.shields.io/twitter/follow/logue256?style=plastic)](https://twitter.com/logue256)
-
 A util package to use Vue 2 with Composition API easily.
 This fork supports [Vuetify2](https://vuetifyjs.com/).
 
@@ -17,19 +10,19 @@ Notice: Due to the implementation of patching `vuex` to support TypeScript5, it 
 ## ⬇️ Install
 
 ```sh
-npm i -S @logue/vue2-helpers
+npm i -S @longmo/vue2-helpers
 ```
 
 or
 
 ```sh
-yarn add -D @logue/vue2-helpers
+yarn add -D @longmo/vue2-helpers
 ```
 
 ## 📃 Usage
 
 ```javascript
-import { createVuexHelpers } from '@logue/vue2-helpers';
+import { createVuexHelpers } from '@longmo/vue2-helpers';
 import { useRouter } from 'vue-router/composable';
 
 const { useState } = createVuexHelpers<
@@ -55,7 +48,7 @@ CDN:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/index.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/index.iife.js"></script>
 ```
 
 ### vue2-helpers/vuex
@@ -70,7 +63,7 @@ CDN:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vuex.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/vuex.iife.js"></script>
 ```
 
 ### vue2-helpers/vue-router
@@ -92,7 +85,7 @@ CDN:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-router@3.6.5/dist/vue-router.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vue-router.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/vue-router.iife.js"></script>
 ```
 
 ### vue2-helpers/vuetify
@@ -108,7 +101,7 @@ CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/vuetify.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/vuetify.iife.js"></script>
 ```
 
 ### vue-helpers/teleport
@@ -129,7 +122,7 @@ CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/teleport.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/teleport.iife.js"></script>
 ```
 
 #### Teleport Example
@@ -154,7 +147,7 @@ CDN:
 
 <script>
 import { defineComponent, ref } from 'vue';
-import Teleport from '@logue/vue2-helpers/teleport';
+import Teleport from '@longmo/vue2-helpers/teleport';
 
 export default defineComponent({
   components: {
@@ -184,7 +177,7 @@ CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue-demi@latest/lib/index.iife.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@logue/vue2-helpers@latest/dist/h-demi.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@longmo/vue2-helpers@latest/dist/h-demi.iife.js"></script>
 ```
 
 ## License
@@ -193,3 +186,4 @@ CDN:
 
 - Original version By [ambit_tsai](https://github.com/ambit-tsai).
 - Modified and add some feature by [Logue](https://github.com/logue).
+- Modified and add some feature by [longmo](https://github.com/long36708).

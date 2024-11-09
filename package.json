@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@logue/vue2-helpers",
+  "name": "@longmo/vue2-helpers",
   "version": "2.3.0",
   "type": "module",
   "description": "A util package to use Vue 2 with Composition API easily",
@@ -24,6 +24,11 @@
       "name": "Logue",
       "url": "https://logue.dev/",
       "email": "logue@hotmail.co.jp"
+    },
+    {
+      "name": "Longmo",
+      "url": "https://long36708.github.io/long-press/",
+      "email": "zsl36708@gmail.com"
     }
   ],
   "license": "Apache-2.0",
@@ -102,11 +107,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/logue/vue2-helpers.git"
+    "url": "git+https://github.com/longmo/vue2-helpers.git"
   },
-  "homepage": "https://github.com/logue/vue2-helpers#readme",
+  "homepage": "https://github.com/longmo/vue2-helpers#readme",
   "bugs": {
-    "url": "https://github.com/logue/vue2-helpers/issues"
+    "url": "https://github.com/longmo/vue2-helpers/issues"
   },
   "dependencies": {
     "patch-package": "^8.0.0",
@@ -123,6 +128,9 @@
   "peerDependenciesMeta": {
     "@vue/composition-api": {
       "optional": true
+    },
+    "vue-router": {
+      "optional": false
     },
     "vuetify": {
       "optional": true
@@ -158,6 +166,7 @@
     "vue": "~2.7.16",
     "vue-router": "~3.6.5",
     "vue-template-compiler": "~2.7.16",
+    "vue-tsc": "^0.38.8",
     "vuetify": "~2.7.1",
     "vuex": "~3.6.2"
   },
