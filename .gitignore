@@ -10,3 +10,4 @@ node_modules
 src/*.d.ts
 .DS_Store
 tsconfig.tsbuildinfo
+/.idea/
