@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@longmo/vue2-helpers",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A util package to use Vue 2 with Composition API easily",
   "keywords": [
     "vue2",
@@ -118,6 +118,7 @@
     "build-only": "node scripts/build.js",
     "type-check": "vue-tsc --build --force",
     "sort": "npx sort-package-json",
+    "release": "npx bumpp --tag --commit --push && npm publish",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install"
   },
