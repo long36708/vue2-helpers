@@ -5,7 +5,7 @@ import VueRouter, {
   type RouterOptions as RawRouterOptions,
   type RouteConfig as RouteRecordRaw,
 } from 'vue-router';
-import { DEPRECATED_ROUTER, OUT_OF_SCOPE, warn } from './utils';
+import { DEPRECATED_ROUTER, OUT_OF_SCOPE, PACKAGE_NAME, warn } from './utils';
 
 export type { NavigationGuard, RouteRecordRaw };
 export type {
@@ -115,10 +115,12 @@ export function onBeforeRouteLeave(leaveGuard: NavigationGuard): void {
  * @returns
  */
 export function onBeforeRouteUpdate(updateGuard: NavigationGuard): void {
-  warn(`[vue2-helpers/vue-router] ${DEPRECATED_ROUTER('onBeforeRouteUpdate')}`);
+  warn(
+    `${PACKAGE_NAME('vue-router')} ${DEPRECATED_ROUTER('onBeforeRouteUpdate')}`
+  );
   const inst = getCurrentInstance();
   if (inst == null) {
-    warn(`[vue2-helpers/vue-router] ${OUT_OF_SCOPE}`);
+    warn(`${PACKAGE_NAME('vue-router')} ${OUT_OF_SCOPE}`);
     return;
   }
   const { options } = inst.proxy.constructor as any;
