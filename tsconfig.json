@@ -1,18 +1,39 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["scripts/*"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "scripts/*",
+    "dist",
+    "**/__tests__/*",
+    "**/*.test.*",
+    "**/*.d-test.*",
+    "**/*.vue",
+    "**/*.d.ts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "dist",
     "noEmit": true,
+    "types": [
+      "node"
+    ],
     "paths": {
-      "@/*": ["./src/*"],
-      "vuex": ["node_modules/vuex/types/index.d.ts"]
-    },
+      "@/*": [
+        "./src/*"
+      ],
+      "vuex": [
+        "node_modules/vuex/types/index.d.ts"
+      ]
+    }
   },
-  "vueCompilerOptions": { "target": 2.7 }
+  "vueCompilerOptions": {
+    "target": 2.7
+  }
 }

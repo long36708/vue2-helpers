@@ -5,3 +5,5 @@
 dist/
 scripts/
 src/*.d.ts
+src/*.test.ts
+src/declareComponent/*.ts

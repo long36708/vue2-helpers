@@ -187,3 +187,8 @@ CDN:
 - Original version By [ambit_tsai](https://github.com/ambit-tsai).
 - Modified and add some feature by [Logue](https://github.com/logue).
 - Modified and add some feature by [longmo](https://github.com/long36708).
+
+
+支持跨 Vue 2/3, 兼容 React JSX 协议的渲染方法
+
+详见 [使用文档](https://wakeadmin.wakedata.com/)

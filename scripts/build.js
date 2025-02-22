@@ -25,7 +25,14 @@ async function compile(file) {
   const name = parse(file).name;
   /** @param {import('rollup').RollupBuild} */
   const bundle = await rollup({
-    external: ['vue', 'vuex', 'vue-router', 'vue-demi', 'vuetify/lib'],
+    external: [
+      'vue',
+      'vuex',
+      'vue-router',
+      'vue-demi',
+      'vuetify/lib',
+      'vue-demi-longmo',
+    ],
     input: file,
     plugins: [typescript()],
   });
@@ -35,6 +42,7 @@ async function compile(file) {
   const globals = {
     'h-demi': 'hDemi',
     'vue-demi': 'VueDemi',
+    'vue-demi-longmo': 'VueDemiLongmo',
     'vue-router': 'VueRouter',
     'vuetify/lib': 'Vuetify',
     vue: 'Vue',

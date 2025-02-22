@@ -50,6 +50,16 @@
       "jsdelivr": "./dist/index.iife.js",
       "unpkg": "./dist/index.iife.js"
     },
+    "./jsx-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "require": "./dist/commonjs/jsx-runtime.js",
+      "import": "./dist/jsx-runtime.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "require": "./dist/commonjs/jsx-runtime.js",
+      "import": "./dist/jsx-runtime.js"
+    },
     "./vuex": {
       "types": "./dist/vuex.d.ts",
       "require": "./dist/vuex.umd.js",
@@ -97,7 +107,8 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "jsx-runtime"
   ],
   "scripts": {
     "lint": "eslint --fix --cache --cache-location ./node_modules/.vite/vite-plugin-eslint && prettier . -w -u",
@@ -120,11 +131,13 @@
     "*": "prettier -w -u"
   },
   "dependencies": {
-    "vue-demi": "latest"
+    "vue-demi": "latest",
+    "vue-demi-longmo": "^1.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^22.13.5",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vue/tsconfig": "^0.5.1",
