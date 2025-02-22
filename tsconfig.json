@@ -10,8 +10,9 @@
     "declarationDir": "dist",
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "vuex": ["node_modules/vuex/types/index.d.ts"]
+    },
   },
   "vueCompilerOptions": { "target": 2.7 }
 }
